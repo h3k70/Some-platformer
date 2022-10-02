@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class HashAnimationCoin : MonoBehaviour
 {
-    public int IsPicked = Animator.StringToHash("IsPicked");
+    public int Picked = Animator.StringToHash("Picked");
 }

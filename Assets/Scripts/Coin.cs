@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
     {
         if (collision.TryGetComponent<Player>(out Player player))
         {
-            _animator.SetTrigger(_animationCoin.IsPicked);
+            _animator.SetTrigger(_animationCoin.Picked);
             Destroy(gameObject, _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         }
     }

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class MovementControl : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody;
     private Transform _transform;
+    private Rigidbody2D _rigidbody;
     private Animator _animator;
     private HashAnimationRogue _animationRogue = new HashAnimationRogue();
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 0);
