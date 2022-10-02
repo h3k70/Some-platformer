@@ -16,6 +16,13 @@ public class MovementControl : MonoBehaviour
     private Quaternion _leftRotation = new Quaternion(0, 180, 0, 0);
     private Vector2 _targetVelocity;
 
+    private void Awake()
+    {
+        _transform = GetComponent<Transform>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+    }
+
     public void Move(float horizontalMove)
     {
         _targetVelocity = new Vector2(horizontalMove, _rigidbody.velocity.y);
@@ -35,12 +42,5 @@ public class MovementControl : MonoBehaviour
         {
             _animator.SetBool(_animationRogue.IsMoving, false);
         }
-    }
-
-    private void Awake()
-    {
-        _transform = GetComponent<Transform>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
     }
 }

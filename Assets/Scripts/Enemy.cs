@@ -15,11 +15,14 @@ public class Enemy : MonoBehaviour
     private float _pathCheckDistance = 0.1f;
     private bool _isFlipped = false;
     private int _cornerModifier;
+    private float _raycastDistance = 0.1f;
+    private float _middleOfColliderInUnits;
 
     private void Awake()
     {
         _movementControl = GetComponent<MovementControl>();
         _collider = GetComponent<BoxCollider2D>();
+        _middleOfColliderInUnits = _collider.size.x * 0.05f;
     }
 
     private void FixedUpdate()
@@ -33,8 +36,8 @@ public class Enemy : MonoBehaviour
     private bool IsFreeWay()
     {
         _cornerModifier =  _isFlipped ? -1 : 1;
-        _lowerRightCorner = new Vector2(transform.position.x + (_pathCheckDistance + _collider.size.x * 0.05f) * _cornerModifier, transform.position.y);
-        RaycastHit2D hitRight = Physics2D.Raycast(_lowerRightCorner, Vector2.down, 0.1f);
+        _lowerRightCorner = new Vector2(transform.position.x + (_pathCheckDistance + _middleOfColliderInUnits) * _cornerModifier, transform.position.y);
+        RaycastHit2D hitRight = Physics2D.Raycast(_lowerRightCorner, Vector2.down, _raycastDistance);
 
         return (hitRight);
     }
