@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MovementControl))]
+[RequireComponent(typeof(JumpControl))]
+[RequireComponent(typeof(Animator))]
+
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;

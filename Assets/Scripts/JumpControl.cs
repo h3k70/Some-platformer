@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class JumpControl : MonoBehaviour
 {
     private RaycastHit2D[] _hit = new RaycastHit2D[1];

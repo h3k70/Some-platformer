@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(MovementControl))]
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
