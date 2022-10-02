@@ -17,12 +17,13 @@ public class Enemy : MonoBehaviour
     private int _cornerModifier;
     private float _raycastDistance = 0.1f;
     private float _middleOfColliderInUnits;
+    private float _multiplierForMiddleInUnits = 0.05f;
 
     private void Awake()
     {
         _movementControl = GetComponent<MovementControl>();
         _collider = GetComponent<BoxCollider2D>();
-        _middleOfColliderInUnits = _collider.size.x * 0.05f;
+        _middleOfColliderInUnits = _collider.size.x * _multiplierForMiddleInUnits;
     }
 
     private void FixedUpdate()
