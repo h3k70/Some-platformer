@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class MovementControl : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5f;
-
     private Rigidbody2D _rigidbody;
     private Transform _transform;
     private Animator _animator;
@@ -14,13 +12,6 @@ public class MovementControl : MonoBehaviour
     private Quaternion _rightRotation = new Quaternion(0, 0, 0, 0);
     private Quaternion _leftRotation = new Quaternion(0, 180, 0, 0);
     private Vector2 _targetVelocity;
-
-    private void Awake()
-    {
-        _transform = GetComponent<Transform>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-    }
 
     public void Move(float horizontalMove)
     {
@@ -41,5 +32,12 @@ public class MovementControl : MonoBehaviour
         {
             _animator.SetBool(_animationRogue.IsMoving, false);
         }
+    }
+
+    private void Awake()
+    {
+        _transform = GetComponent<Transform>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 }

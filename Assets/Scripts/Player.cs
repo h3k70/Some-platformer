@@ -9,22 +9,21 @@ public class Player : MonoBehaviour
     [SerializeField] private float _JumpForce = 13f;
 
     private float _horizontalMove;
-    //private BoxCollider2D _collider;
     private MovementControl _movementControl;
-    //private RaycastHit2D[] _hit = new RaycastHit2D[1];
+    private JumpControl _jumpControl;
 
     private void Awake()
     {
-        //_collider = GetComponent<BoxCollider2D>();
         _movementControl = GetComponent<MovementControl>();
+        _jumpControl = GetComponent<JumpControl>();
     }
 
     private void Update()
     {
         _horizontalMove = Input.GetAxis("Horizontal") * _speed;
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //    Jump();
+        if (Input.GetKeyDown(KeyCode.Space))
+            _jumpControl.Jump(_JumpForce);
     }
 
     private void FixedUpdate()
@@ -32,18 +31,11 @@ public class Player : MonoBehaviour
         _movementControl.Move(_horizontalMove);
     }
 
-    /*private bool IsGrounded()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(_collider.size.x);
-        Debug.Log(_collider.size.y);
-        int _collisionCount = _rigidbody.Cast(Vector2.down, _hit, 0.1f);
-        return _collisionCount > 0;
-    }
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+        {
 
-    private void Jump()
-    {
-        if (IsGrounded())
-            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _JumpForce);
+        }
     }
-    */
 }
