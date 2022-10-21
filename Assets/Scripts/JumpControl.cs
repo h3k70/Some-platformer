@@ -8,6 +8,7 @@ public class JumpControl : MonoBehaviour
 {
     private RaycastHit2D[] _hit = new RaycastHit2D[1];
     private Rigidbody2D _rigidbody;
+    private float _castDistance = 0.1f;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class JumpControl : MonoBehaviour
 
     private bool IsGrounded()
     {
-        int _collisionCount = _rigidbody.Cast(Vector2.down, _hit, 0.1f);
+        int _collisionCount = _rigidbody.Cast(Vector2.down, _hit, _castDistance);
         return _collisionCount > 0;
     }
 }
